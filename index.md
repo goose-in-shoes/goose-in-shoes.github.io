@@ -1,5 +1,4 @@
 ---
-title: Welcome to my page!! 🪿👞👞
+title: 🪿👞👞
 ---
 
-This is a very cool page test! I love typing on my keyboard. I like IT though I don't like programming.
