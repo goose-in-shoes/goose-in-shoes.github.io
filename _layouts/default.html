@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Goose in shoes</title>
+  <title>{{ page.title | default: site.title}}</title>
   <meta name="description" content="Retro portfolio w stylu GeoCities" />
   <style>
     /* =========================
@@ -230,7 +230,11 @@
               <p>I like geese</p>
               <p><em>TODO:</em>add more info and cool images</p>
             </section>
-
+            <!-- BLOG -->
+            <section id="blog" class="panel">
+              <h2>Blog</h2>
+              {{ content }}
+            </section>
             <!-- WORK / GALLERY -->
             <section id="work" class="panel" aria-labelledby="galeria">
               <h2 id="gallery">Gallery drag and drop</h2>
