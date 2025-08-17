@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goose in shoes</title>
+  <meta name="description" content="Retro portfolio w stylu GeoCities" />
+  <style>
+    /* =========================
+       GeoCities style design
+       ========================= */
+    :root{
+      --bg: #000018;           /* bg */
+      --text: #E7E7FF;         /* text */
+      --accent: #00f0ff;       /* accent or links */
+      --accent-2: #ff00d4;     /* accent */
+      --panel: rgba(255,255,255,0.06);
+      --border: #6cf;
+      --link: #6cf;
+      --visited: #f6f;
+      --warning: #fffc00;
+      --maxw: 980px;           /* website width */
+      --tile: url('data:image/svg+xml;utf8,\
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">\
+        <rect width="32" height="32" fill="%23000018"/>\
+        <circle cx="6" cy="6" r="1" fill="%23aaf"/>\
+        <circle cx="22" cy="14" r="1" fill="%23d6f"/>\
+        <circle cx="12" cy="26" r="1" fill="%239cf"/>\
+      </svg>');
+      --font-ui: system-ui, "Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
+      --font-mono: ui-monospace, "Courier New", Courier, monospace;
+    }
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background: var(--bg) var(--tile);
+      font-family: var(--font-ui);
+      line-height:1.5;
+      image-rendering: pixelated; /* retro crisp */
+    }
+
+    /* links */
+    a{color:var(--link)}
+    a:visited{color:var(--visited)}
+    a:hover, a:focus{outline: none; text-decoration: underline wavy;}
+
+    /* skip link */
+    .skip{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{position:static; width:auto; height:auto; padding:6px 10px; background:#000; border:2px solid var(--warning);}
+
+    /* ====== Old school table ====== */
+    .shell{
+      max-width:var(--maxw);
+      margin:12px auto;
+      border:2px ridge var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 0 40px rgba(0,255,255,0.25) inset;
+    }
+    table.layout{width:100%; border-collapse:collapse}
+    td{vertical-align:top}
+
+    /* ====== Header ====== */
+    header{
+      padding:8px 10px;
+      border-bottom:2px groove var(--border);
+      background:
+        radial-gradient(ellipse at top, rgba(0,255,255,0.2), transparent 60%),
+        var(--tile), var(--bg);
+      position:relative;
+      text-align:center;
+    }
+    .title{
+      font-family: var(--font-mono);
+      font-weight:700;
+      letter-spacing:1px;
+      font-size: clamp(20px, 3.2vw, 32px);
+      text-shadow: 0 0 6px #0ff, 0 0 16px #f0f;
+    }
+    /* marquee wrapper for better a11y */
+    .marquee{
+      margin-top:6px;
+      border-top:1px dashed var(--border);
+      border-bottom:1px dashed var(--border);
+      padding:4px 0;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .marquee__inner{
+      display:inline-block;
+      padding-left:100%;
+      animation: scroll 18s linear infinite;
+    }
+    @keyframes scroll{
+      from{ transform: translateX(0); }
+      to  { transform: translateX(-100%); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .marquee__inner{ animation: none; }
+    }
+
+    /* ====== Sidebar ====== */
+    .sidebar{
+      width:210px;
+      background: rgba(0,0,0,0.35);
+      border-right:2px ridge var(--border);
+      padding:8px;
+    }
+    .badge{
+      display:block;
+      margin:8px 0;
+      padding:6px;
+      border:2px outset var(--border);
+      background: #081222;
+      text-align:center;
+      font-size:12px;
+    }
+    .nav{
+      list-style:none; padding:0; margin:10px 0;
+      border:2px groove var(--border);
+      background: #050c18;
+    }
+    .nav li{border-bottom:1px dashed #3aa}
+    .nav a{display:block; padding:8px 10px; text-decoration:none}
+    .nav a:hover{background:#001a2a}
+
+    /* ====== Content ====== */
+    .content{
+      padding:12px;
+    }
+    .panel{
+      background: var(--panel);
+      border:2px groove var(--border);
+      padding:10px;
+      margin-bottom:12px;
+    }
+    h2{margin:0 0 8px; font-size:20px}
+    .blink{
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink{ 50%{ opacity:0; } }
+    @media (prefers-reduced-motion: reduce){
+      .blink{ animation: none; }
+    }
+
+    /* ====== drag & drop gallery ====== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap:8px;
+    }
+    .thumb{
+      border:2px outset var(--border);
+      background:#0a1426;
+      padding:6px;
+      cursor:grab;
+      user-select:none;
+    }
+    .thumb:active{cursor:grabbing}
+    .thumb img{
+      width:100%; height:auto; display:block;
+      background:#000; /* fallback box */
+    }
+    .thumb[aria-grabbed="true"]{
+      outline:3px solid var(--warning);
+      filter: saturate(1.5);
+    }
+    .drop-hint{
+      outline:3px dashed var(--accent);
+    }
+
+    /* ====== Guestbook ====== */
+    form.guestbook label{display:block; font-size:12px; margin:6px 0 2px}
+    form.guestbook input, form.guestbook textarea{
+      width:100%; background:#0a1426; border:1px solid var(--border); color:var(--text); padding:6px; font-family:var(--font-ui);
+    }
+    form.guestbook button{
+      margin-top:8px; padding:6px 10px; border:2px outset var(--border); background:#0b1a2e; color:var(--text); cursor:pointer;
+    }
+
+    /* ====== Footer ====== */
+    footer{
+      border-top:2px groove var(--border);
+      padding:8px 10px;
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap;
+      background:#040c18;
+    }
+    .counter{font-family:var(--font-mono)}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip nav</a>
+
+  <div class="shell" role="application" aria-label="Retro page">
+    <header>
+      <div class="title">My digital garden</div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__inner">★ fresh illustrations • free wallpapers • newsletter ★ fresh illustrations • free wallpapers • newsletter ★</div>
+      </div>
+    </header>
+
+    <table class="layout" role="presentation">
+      <tr>
+        <!-- SIDEBAR -->
+        <td class="sidebar">
+          <div class="badge">[88×31] <br> <span class="blink">UNDER CONSTRUCTION</span></div>
+
+          <ul class="nav" role="navigation" aria-label="homepage">
+            <li><a href="#about">About me</a></li>
+            <li><a href="#work">Gallery</a></li>
+            <li><a href="#guestbook">Guestbook</a></li>
+            <li><a href="#links">Webring & links</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="badge">Works best with<br><strong>Netscape 4.7</strong></div>
+          <div class="badge">CSS-free since 1997*<br><small></small></div>
+        </td>
+
+        <!-- CONTENT -->
+        <td class="content">
+          <main id="main">
+            <!-- ABOUT -->
+            <section id="about" class="panel">
+              <h2>About me</h2>
+              <p>I like geese</p>
+              <p><em>TODO:</em>add more info and cool images</p>
+            </section>
+
+            <!-- WORK / GALLERY -->
+            <section id="work" class="panel" aria-labelledby="galeria">
+              <h2 id="gallery">Gallery drag and drop</h2>
+              <div class="gallery" id="gallery" aria-live="polite">
+                <!-- TODO: change thumbnails -->
+                <div class="thumb" draggable="true"><img alt="Ilu1" src="https://placehold.co/300x220/png?text=Art+01"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu2" src="https://placehold.co/300x220/png?text=Art+02"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu3" src="https://placehold.co/300x220/png?text=Art+03"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu4" src="https://placehold.co/300x220/png?text=Art+04"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu5" src="https://placehold.co/300x220/png?text=Art+05"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu6" src="https://placehold.co/300x220/png?text=Art+06"></div>
+              </div>
+            </section>
+
+            <!-- LINKS / WEBRING -->
+            <section id="links" class="panel">
+              <h2>Links</h2>
+              <p>Prev • <a href="#">Random</a> • <a href="#">Next</a></p>
+              <ul>
+                <li><a href="#">My blog</a></li>
+              </ul>
+            </section>
+
+            <!-- CONTACT -->
+            <section id="contact" class="panel">
+              <h2>Kontakt</h2>
+              <p>e-mail: <a href="#">nonexistentemail@nonexistenddomain.com</a></p>
+              <p><em>TODO:</em> add buttons 88x31 and „Under construction”.</p>
+            </section>
+          </main>
+        </td>
+      </tr>
+    </table>
+
+    <footer>
+      <div>© <span id="year"></span> Your name, last updated <time id="updated"></time></div>
+      <div class="counter">Hits <span id="hits">0</span></div>
+    </footer>
+  </div>
+
+  <script>
+    /* =========================
+       Small JS retro quality-of-life
+       ========================= */
+
+    // Yr + update timestamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('updated').textContent = new Date(document.lastModified).toLocaleDateString('pl-PL',{
+      year:'numeric', month:'2-digit', day:'2-digit'
+    });
+
+    // Local visit counter (not relying on a server)
+    const k='retro_hits_v1';
+    const n = Number(localStorage.getItem(k) || 0) + 1;
+    localStorage.setItem(k, n);
+    document.getElementById('hits').textContent = n.toLocaleString('pl-PL');
+
+    // Drag & drop gallery — thumbnail viewer
+    const gallery = document.getElementById('gallery');
+    let dragEl = null;
+
+    gallery.addEventListener('dragstart', (e)=>{
+      const target = e.target.closest('.thumb');
+      if(!target) return;
+      dragEl = target;
+      target.setAttribute('aria-grabbed','true');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    gallery.addEventListener('dragend', (e)=>{
+      if(dragEl){
+        dragEl.removeAttribute('aria-grabbed');
+        dragEl = null;
+      }
+      [...gallery.children].forEach(c => c.classList.remove('drop-hint'));
+    });
+
+    gallery.addEventListener('dragover', (e)=>{
+      e.preventDefault();
+      const over = e.target.closest('.thumb');
+      if(!dragEl || !over || over === dragEl) return;
+      over.classList.add('drop-hint');
+      const rect = over.getBoundingClientRect();
+      const before = (e.clientY - rect.top) < rect.height/2;
+      gallery.insertBefore(dragEl, before ? over : over.nextSibling);
+    });
+
+    gallery.addEventListener('dragleave', (e)=>{
+      const el = e.target.closest('.thumb');
+      if(el) el.classList.remove('drop-hint');
+    });
+
+    // Keyboard focus
+    gallery.querySelectorAll('.thumb').forEach((t,i)=>{
+      t.tabIndex = 0;
+      t.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+          e.preventDefault();
+          const prev = t.previousElementSibling;
+          if(prev) gallery.insertBefore(t, prev);
+        }
+        if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+          e.preventDefault();
+          const next = t.nextElementSibling;
+          if(next) gallery.insertBefore(next, t);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

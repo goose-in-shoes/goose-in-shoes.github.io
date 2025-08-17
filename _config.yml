@@ -1,4 +1,5 @@
-theme: minima
-title: "Goose in shoes test"
+theme: null # used to have minima
+title: "Goose in shoes"
 author: 'Goose in shoes'
 description: 'Testing github pages'
+
