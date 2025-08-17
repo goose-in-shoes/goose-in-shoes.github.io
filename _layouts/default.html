@@ -233,7 +233,7 @@
 
             <!-- WORK / GALLERY -->
             <section id="work" class="panel" aria-labelledby="galeria">
-              <h2 id="galeria">Gallery drag and drop</h2>
+              <h2 id="gallery">Gallery drag and drop</h2>
               <div class="gallery" id="gallery" aria-live="polite">
                 <!-- TODO: change thumbnails -->
                 <div class="thumb" draggable="true"><img alt="Ilu1" src="https://placehold.co/300x220/png?text=Art+01"></div>
@@ -273,7 +273,7 @@
 
   <script>
     /* =========================
-       🧰 Small JS retro quality-of-life
+       Small JS retro quality-of-life
        ========================= */
 
     // Yr + update timestamp
@@ -288,7 +288,7 @@
     localStorage.setItem(k, n);
     document.getElementById('hits').textContent = n.toLocaleString('pl-PL');
 
-    // Drag & drop galeria — thumbnail viewer
+    // Drag & drop gallery — thumbnail viewer
     const gallery = document.getElementById('gallery');
     let dragEl = null;
 
@@ -323,7 +323,7 @@
       if(el) el.classList.remove('drop-hint');
     });
 
-    // Uproszczone focusy klawiaturą (opcjonalnie)
+    // Keyboard focus
     gallery.querySelectorAll('.thumb').forEach((t,i)=>{
       t.tabIndex = 0;
       t.addEventListener('keydown', (e)=>{
