@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>~* Moja Strona *~</title>
+  <title>Goose in shoes</title>
   <meta name="description" content="Retro portfolio w stylu GeoCities" />
   <style>
     /* =========================
-       🌐 GeoCities Base Styles
+       GeoCities style design
        ========================= */
     :root{
-      /* 🎨 Szybka paleta — zmień pod siebie */
-      --bg: #000018;           /* tło */
-      --text: #E7E7FF;         /* tekst */
-      --accent: #00f0ff;       /* akcent / linki */
-      --accent-2: #ff00d4;     /* akcent 2 */
+      --bg: #000018;           /* bg */
+      --text: #E7E7FF;         /* text */
+      --accent: #00f0ff;       /* accent or links */
+      --accent-2: #ff00d4;     /* accent */
       --panel: rgba(255,255,255,0.06);
       --border: #6cf;
       --link: #6cf;
       --visited: #f6f;
       --warning: #fffc00;
-      --maxw: 980px;           /* szerokość strony */
+      --maxw: 980px;           /* website width */
       --tile: url('data:image/svg+xml;utf8,\
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">\
         <rect width="32" height="32" fill="%23000018"/>\
@@ -42,18 +41,18 @@
       image-rendering: pixelated; /* retro crisp */
     }
 
-    /* 🔗 linki */
+    /* links */
     a{color:var(--link)}
     a:visited{color:var(--visited)}
     a:hover, a:focus{outline: none; text-decoration: underline wavy;}
 
-    /* ♿ skip link */
+    /* skip link */
     .skip{
       position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
     }
     .skip:focus{position:static; width:auto; height:auto; padding:6px 10px; background:#000; border:2px solid var(--warning);}
 
-    /* ====== Strona w tabeli (oldschool 🙃) ====== */
+    /* ====== Old school table ====== */
     .shell{
       max-width:var(--maxw);
       margin:12px auto;
@@ -64,7 +63,7 @@
     table.layout{width:100%; border-collapse:collapse}
     td{vertical-align:top}
 
-    /* ====== Nagłówek ====== */
+    /* ====== Header ====== */
     header{
       padding:8px 10px;
       border-bottom:2px groove var(--border);
@@ -147,7 +146,7 @@
       .blink{ animation: none; }
     }
 
-    /* ====== Galeria (drag & drop) ====== */
+    /* ====== drag & drop gallery ====== */
     .gallery{
       display:grid;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -194,13 +193,13 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Pomiń nawigację</a>
+  <a class="skip" href="#main">Skip nav</a>
 
-  <div class="shell" role="application" aria-label="Retro strona a'la GeoCities">
+  <div class="shell" role="application" aria-label="Retro page">
     <header>
-      <div class="title">★ Witaj w moim cyber-ogródeczku ★</div>
+      <div class="title">My digital garden</div>
       <div class="marquee" aria-hidden="true">
-        <div class="marquee__inner">★ świeże ilustracje • darmowe tapety • newsletter • współpraca mile widziana ★ świeże ilustracje • darmowe tapety • newsletter • współpraca mile widziana ★</div>
+        <div class="marquee__inner">★ fresh illustrations • free wallpapers • newsletter ★ fresh illustrations • free wallpapers • newsletter ★</div>
       </div>
     </header>
 
@@ -210,16 +209,16 @@
         <td class="sidebar">
           <div class="badge">[88×31] <br> <span class="blink">UNDER CONSTRUCTION</span></div>
 
-          <ul class="nav" role="navigation" aria-label="Główne">
-            <li><a href="#about">O mnie</a></li>
-            <li><a href="#work">Galeria</a></li>
-            <li><a href="#guestbook">Księga gości</a></li>
-            <li><a href="#links">Webring & linki</a></li>
-            <li><a href="#contact">Kontakt</a></li>
+          <ul class="nav" role="navigation" aria-label="homepage">
+            <li><a href="#about">About me</a></li>
+            <li><a href="#work">Gallery</a></li>
+            <li><a href="#guestbook">Guestbook</a></li>
+            <li><a href="#links">Webring & links</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
 
-          <div class="badge">Najlepiej działa w<br><strong>Netscape 4.7</strong> 😉</div>
-          <div class="badge">CSS-free since 1997*<br><small>*no prawie</small></div>
+          <div class="badge">Works best with<br><strong>Netscape 4.7</strong></div>
+          <div class="badge">CSS-free since 1997*<br><small></small></div>
         </td>
 
         <!-- CONTENT -->
@@ -227,55 +226,39 @@
           <main id="main">
             <!-- ABOUT -->
             <section id="about" class="panel">
-              <h2>O mnie</h2>
-              <p>Cześć! Jestem <strong>Ilustrator(ka)</strong> z obsesją na punkcie pikseli i gradientów typu „space”. Tworzę plakaty, okładki i identy. </p>
-              <p><em>TODO:</em> Wklej tu krótkie bio + 1–2 key visuale / GIFy 88×31.</p>
+              <h2>About me</h2>
+              <p>I like geese</p>
+              <p><em>TODO:</em>add more info and cool images</p>
             </section>
 
             <!-- WORK / GALLERY -->
             <section id="work" class="panel" aria-labelledby="galeria">
-              <h2 id="galeria">Galeria (przeciągnij, żeby zmienić kolejność)</h2>
+              <h2 id="galeria">Gallery drag and drop</h2>
               <div class="gallery" id="gallery" aria-live="polite">
-                <!-- TODO: Podmień src na swoje miniatury -->
-                <div class="thumb" draggable="true"><img alt="Ilustracja 1" src="https://placehold.co/300x220/png?text=Art+01"></div>
-                <div class="thumb" draggable="true"><img alt="Ilustracja 2" src="https://placehold.co/300x220/png?text=Art+02"></div>
-                <div class="thumb" draggable="true"><img alt="Ilustracja 3" src="https://placehold.co/300x220/png?text=Art+03"></div>
-                <div class="thumb" draggable="true"><img alt="Ilustracja 4" src="https://placehold.co/300x220/png?text=Art+04"></div>
-                <div class="thumb" draggable="true"><img alt="Ilustracja 5" src="https://placehold.co/300x220/png?text=Art+05"></div>
-                <div class="thumb" draggable="true"><img alt="Ilustracja 6" src="https://placehold.co/300x220/png?text=Art+06"></div>
+                <!-- TODO: change thumbnails -->
+                <div class="thumb" draggable="true"><img alt="Ilu1" src="https://placehold.co/300x220/png?text=Art+01"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu2" src="https://placehold.co/300x220/png?text=Art+02"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu3" src="https://placehold.co/300x220/png?text=Art+03"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu4" src="https://placehold.co/300x220/png?text=Art+04"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu5" src="https://placehold.co/300x220/png?text=Art+05"></div>
+                <div class="thumb" draggable="true"><img alt="Ilu6" src="https://placehold.co/300x220/png?text=Art+06"></div>
               </div>
-            </section>
-
-            <!-- GUESTBOOK -->
-            <section id="guestbook" class="panel">
-              <h2>Księga gości</h2>
-              <p>Napisz kilka słów — trafią do mojej skrzynki. (Retro feel: <code>mailto:</code>)</p>
-              <form class="guestbook" action="mailto:twoj.mail@domena.pl" method="post" enctype="text/plain">
-                <label for="g-name">Imię</label>
-                <input id="g-name" name="name" placeholder="Anon"/>
-                <label for="g-msg">Wiadomość</label>
-                <textarea id="g-msg" name="message" rows="4" placeholder="Zostaw wiadomość…"></textarea>
-                <button type="submit">Wyślij</button>
-              </form>
-              <p><small>Tip: jeśli wolisz nowocześnie — podepnij dowolny formularz (Tally, Typeform) i podmień <code>action</code>.</small></p>
             </section>
 
             <!-- LINKS / WEBRING -->
             <section id="links" class="panel">
-              <h2>Webring & linki</h2>
-              <p>Poprzednia • <a href="#">Losowa</a> • <a href="#">Następna</a></p>
+              <h2>Links</h2>
+              <p>Prev • <a href="#">Random</a> • <a href="#">Next</a></p>
               <ul>
-                <li><a href="#">Mój blog</a></li>
-                <li><a href="#">Sklep z printami</a></li>
-                <li><a href="#">Dribbble / Behance</a></li>
+                <li><a href="#">My blog</a></li>
               </ul>
             </section>
 
             <!-- CONTACT -->
             <section id="contact" class="panel">
               <h2>Kontakt</h2>
-              <p>e-mail: <a href="mailto:twoj.mail@domena.pl">twoj.mail@domena.pl</a></p>
-              <p><em>TODO:</em> Dodaj ikonki 88×31, np. „Best viewed with …”, „HTML 3.2 compliant”, „Under construction”.</p>
+              <p>e-mail: <a href="#">nonexistentemail@nonexistenddomain.com</a></p>
+              <p><em>TODO:</em> add buttons 88x31 and „Under construction”.</p>
             </section>
           </main>
         </td>
@@ -283,29 +266,29 @@
     </table>
 
     <footer>
-      <div>© <span id="year"></span> Twoje Imię — ostatnia aktualizacja: <time id="updated"></time></div>
-      <div class="counter">🔢 Odwiedziny: <span id="hits">0</span></div>
+      <div>© <span id="year"></span> Your name, last updated <time id="updated"></time></div>
+      <div class="counter">Hits <span id="hits">0</span></div>
     </footer>
   </div>
 
   <script>
     /* =========================
-       🧰 Mały JS retro quality-of-life
+       🧰 Small JS retro quality-of-life
        ========================= */
 
-    // Rok i timestamp aktualizacji
+    // Yr + update timestamp
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('updated').textContent = new Date(document.lastModified).toLocaleDateString('pl-PL',{
       year:'numeric', month:'2-digit', day:'2-digit'
     });
 
-    // "Licznik odwiedzin" lokalny (niezależny od serwera)
+    // Local visit counter (not relying on a server)
     const k='retro_hits_v1';
     const n = Number(localStorage.getItem(k) || 0) + 1;
     localStorage.setItem(k, n);
     document.getElementById('hits').textContent = n.toLocaleString('pl-PL');
 
-    // Drag & drop galeria — przestawianie miniaturek
+    // Drag & drop galeria — thumbnail viewer
     const gallery = document.getElementById('gallery');
     let dragEl = null;
 
